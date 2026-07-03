@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+const TimePrecision int = 3
+
 func LogElapsedTime(name string, start time.Time) {
 	fmt.Printf("%s took: %.*f seconds\n", name, TimePrecision, time.Since(start).Seconds())
 }
