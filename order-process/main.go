@@ -56,13 +56,17 @@ func main() {
 }
 
 func updateOrderStatuses(order *Order) {
+	order.mu.Lock()
 	time.Sleep(1 * time.Second)
 	order.Status = Statuses[rand.Intn(len(Statuses))]
 	fmt.Printf("Updating Order <%d> status is:  <%s>\n", order.Id, order.Status)
+	order.mu.Unlock()
 
+	updateMutex.Lock()
 	currentUpdates := totalUpdates
 	time.Sleep(5 * time.Millisecond)
 	totalUpdates = currentUpdates + 1
+	defer updateMutex.Unlock()
 }
 
 func processOrders(orders []*Order) {
