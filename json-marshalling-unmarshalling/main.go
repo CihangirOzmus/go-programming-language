@@ -27,4 +27,12 @@ func main() {
 		log.Fatalf("JSON marshalling failed: %v", err)
 	}
 	fmt.Printf("Movies in JSON: %s\n", data)
+
+	var titles []struct {
+		Title string `json:"title"`
+	}
+	if err := json.Unmarshal(data, &titles); err != nil {
+		log.Fatalf("JSON unmarshalling failed: %v", err)
+	}
+	fmt.Println(titles)
 }
