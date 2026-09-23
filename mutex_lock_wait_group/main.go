@@ -26,10 +26,10 @@ func increaseCounterWithChannel(counter *Counter, ch chan bool) {
 }
 
 func increaseCounterWithWaitGroup(counter *Counter, wg *sync.WaitGroup) {
+	defer wg.Done() // runs last: after the mutex is released and the value is printed
 	counter.lock.Lock()
 	defer counter.lock.Unlock()
 	counter.value++
-	wg.Done()
 	fmt.Println(counter.value)
 }
 

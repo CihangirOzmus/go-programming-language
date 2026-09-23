@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"time"
 )
 
@@ -18,7 +19,7 @@ func TimeTicker(start time.Time, ticker *time.Ticker, done chan bool) {
 			return
 		case <-ticker.C:
 			elapsed := time.Since(start).Seconds()
-			if elapsed == 1 {
+			if math.Round(elapsed) == 1 {
 				fmt.Printf("%.*f second elapsed\n", TimePrecision, elapsed)
 			} else {
 				fmt.Printf("%.*f seconds elapsed\n", TimePrecision, elapsed)

@@ -5,6 +5,7 @@ import (
 	"image/color"
 	"image/gif"
 	"io"
+	"log"
 	"math"
 	"math/rand"
 )
@@ -42,5 +43,7 @@ func DrawLissajous(out io.Writer) {
 		anim.Image = append(anim.Image, img)
 	}
 
-	gif.EncodeAll(out, &anim)
+	if err := gif.EncodeAll(out, &anim); err != nil {
+		log.Printf("encoding gif failed: %v", err)
+	}
 }

@@ -17,7 +17,7 @@ func Run1() {
 
 func Run2() {
 	if ShowElapsedTime {
-		defer LogElapsedTime("Run 1", time.Now())
+		defer LogElapsedTime("Run 2", time.Now())
 	}
 	time.Sleep(2 * time.Second)
 	fmt.Println("run2 done")

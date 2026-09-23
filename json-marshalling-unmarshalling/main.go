@@ -14,7 +14,7 @@ type Movie struct {
 }
 
 var movies = []Movie{
-	{"Casablanca", 1984, true, []string{"Humphrey Bogart", "Ingrid Bergman"}},
+	{"Casablanca", 1942, true, []string{"Humphrey Bogart", "Ingrid Bergman"}},
 	{"Cool Hand Luke", 1967, true, []string{"Paul Newman"}},
 	{"Another One No Color", 1967, false, nil},
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 )
 
 type Employee struct {
@@ -40,7 +41,10 @@ func main() {
 	fmt.Println(employee1)
 	employee1.printAddress()
 
-	jsonData, _ := json.MarshalIndent(employee1, "", "   ")
+	jsonData, err := json.MarshalIndent(employee1, "", "   ")
+	if err != nil {
+		log.Fatalf("JSON marshalling failed: %v", err)
+	}
 	fmt.Println(string(jsonData))
 
 	// anonymous struct

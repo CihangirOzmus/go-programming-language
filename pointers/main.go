@@ -7,11 +7,11 @@ import (
 )
 
 type Book struct {
-	id int
+	id    int
 	title string
 }
 
-func (b *Book) setTitle(title string)  {
+func (b *Book) setTitle(title string) {
 	b.title = title
 
 	// go automatically dereference b
@@ -21,17 +21,16 @@ func (b *Book) setTitle(title string)  {
 	// *b.title = title
 }
 
-func change(num *int)  {
+func change(num *int) {
 	*num = 100
 }
 
-
-func testPtrSlice(ptrs *[]*int)  {
+func testPtrSlice(ptrs *[]*int) {
 	var sb strings.Builder
 	values := *ptrs
 	for i, val := range values {
 		s := strconv.Itoa(*val)
-		if i < len(values) - 1 {
+		if i < len(values)-1 {
 			sb.WriteString(s)
 			sb.WriteString("-")
 		} else {
@@ -39,7 +38,6 @@ func testPtrSlice(ptrs *[]*int)  {
 		}
 	}
 	fmt.Println(sb.String())
-	sb.Reset()
 }
 
 func main() {
@@ -58,11 +56,11 @@ func main() {
 	y := &x
 	z := &y
 	fmt.Printf("%T %T %T\n", x, y, z) //int *int(ptr) **int(ptr to ptr)
-	fmt.Println(x, y ,z) // val addr addr
-	fmt.Println(x, *y ,*z) // val val addr
-	fmt.Println(x, *y ,**z) // val val val
+	fmt.Println(x, y, z)              // val addr addr
+	fmt.Println(x, *y, *z)            // val val addr
+	fmt.Println(x, *y, **z)           // val val val
 
-	// 4rd example
+	// 4th example
 	a, b, c := 1, 2, 3
 	ptrSlice := &[]*int{&a, &b, &c}
 	testPtrSlice(ptrSlice)
