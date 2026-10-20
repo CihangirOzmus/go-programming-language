@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func main() {
+	// 1. plain stack
 	stack := []int{1, 2, 3}
 
 	// push
@@ -18,4 +19,16 @@ func main() {
 	// pop
 	stack = stack[:len(stack)-1]
 	fmt.Printf("final stack: %v\n", stack)
+
+	// 2. stack as data structure
+	s := &Stack[int]{}
+	s.Push(11)
+	s.Push(22)
+	s.Push(33)
+
+	v, _ := s.Pop()
+	fmt.Printf("pop value: %v\n", v)
+
+	v, _ = s.Peek()
+	fmt.Printf("peek value: %v\n", v)
 }
